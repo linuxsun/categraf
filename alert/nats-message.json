@@ -1,0 +1,73 @@
+[
+  {
+    "cate": "prometheus",
+    "datasource_ids": [
+      5
+    ],
+    "name": "NATS消息积压数量过多！！",
+    "note": "",
+    "prod": "metric",
+    "algorithm": "",
+    "algo_params": null,
+    "delay": 0,
+    "severity": 0,
+    "severities": [
+      2
+    ],
+    "disabled": 0,
+    "prom_for_duration": 60,
+    "prom_ql": "",
+    "rule_config": {
+      "queries": [
+        {
+          "prom_ql": "nats_msg_total>=1000",
+          "severity": 2
+        }
+      ]
+    },
+    "prom_eval_interval": 30,
+    "enable_stime": "00:00",
+    "enable_stimes": [
+      "00:00"
+    ],
+    "enable_etime": "00:00",
+    "enable_etimes": [
+      "00:00"
+    ],
+    "enable_days_of_week": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "enable_days_of_weeks": [
+      [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    ],
+    "enable_in_bg": 0,
+    "notify_recovered": 1,
+    "notify_channels": [
+      "wecom"
+    ],
+    "notify_repeat_step": 60,
+    "notify_max_number": 1,
+    "recover_duration": 0,
+    "callbacks": [],
+    "runbook_url": "",
+    "append_tags": [
+      "nats=test"
+    ],
+    "annotations": {},
+    "extra_config": null
+  }
+]
