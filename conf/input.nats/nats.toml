@@ -1,0 +1,31 @@
+# Provides metrics about the state of a NATS server
+# This plugin does NOT support FreeBSD
+# # collect interval
+# interval = 15
+
+[[instances]]
+## The address of the monitoring endpoint of the NATS server
+## IDE添加参数： -configs=D:\GoLangProject\categraf-0.4.5\conf
+# server = "http://localhost:8222"
+server = "http://nats.aam.test:8080"
+user = "nats-client-user-test"
+password = "nxh0oJtPW8l6gv2YfjOk"
+cluster = ["nats://10.0.1.249:4221", "nats://10.0.1.249:4222", "nats://10.0.1.249:4223"]
+labels = {department="aamnec", envir="test", zone="heye", devType="kvm"}
+## Set response_timeout (default 5 seconds)
+response_timeout = "5s"
+## interval = global.interval * interval_times
+# interval_times = 1
+
+[[instances]]
+### The address of the monitoring endpoint of the NATS server
+server = "http://10.0.1.7:8222"
+user = ""
+password = ""
+##cluster = ["nats://10.0.1.7:4222"]
+cluster = ["nats://10.0.1.7:4222", "nats://10.0.1.6:4222", "nats://10.0.1.5:4222"]
+labels = {department="aam", envir="test", zone="heye", devType="phy"}
+### Set response_timeout (default 5 seconds)
+response_timeout = "5s"
+### interval = global.interval * interval_times
+## interval_times = 1

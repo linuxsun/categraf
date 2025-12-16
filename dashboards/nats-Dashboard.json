@@ -1,0 +1,408 @@
+{
+    "name": "nats-test",
+    "tags": "Categraf",
+    "ident": "",
+    "configs": {
+        "var": [
+            {
+                "name": "datasource",
+                "label": "数据源",
+                "type": "datasource",
+                "definition": "prometheus",
+                "defaultValue": 5
+            },
+            {
+                "name": "instance",
+                "type": "query",
+                "hide": false,
+                "datasource": {
+                    "cate": "prometheus",
+                    "value": 5
+                },
+                "definition": "label_values(nats_healthz,instance)"
+            }
+        ],
+        "panels": [
+            {
+                "type": "text",
+                "id": "86f62081-5ad2-4380-af70-3de43ead5c4f",
+                "layout": {
+                    "h": 4,
+                    "w": 4,
+                    "x": 0,
+                    "y": 0,
+                    "i": "86f62081-5ad2-4380-af70-3de43ead5c4f",
+                    "isResizable": true
+                },
+                "version": "2.0.0",
+                "custom": {
+                    "textColor": "#000000",
+                    "bgColor": "#FFFFFF",
+                    "textSize": 12,
+                    "justifyContent": "center",
+                    "alignItems": "center",
+                    "content": "<img src=\"https://nats.io/img/logos/nats-horizontal-color.png\" width=\"250px\" />"
+                },
+                "datasourceCate": "prometheus",
+                "datasourceValue": "${datasource}"
+            },
+            {
+                "type": "stat",
+                "id": "32a31060-6914-47db-b3ec-4a9735fa510b",
+                "layout": {
+                    "h": 4,
+                    "w": 3,
+                    "x": 4,
+                    "y": 0,
+                    "i": "32a31060-6914-47db-b3ec-4a9735fa510b",
+                    "isResizable": true
+                },
+                "version": "3.0.0",
+                "datasourceCate": "prometheus",
+                "datasourceValue": 5,
+                "targets": [
+                    {
+                        "refId": "A",
+                        "expr": "nats_healthz{instance=~\"$instance\"}",
+                        "time": {
+                            "start": "now-1m",
+                            "end": "now"
+                        },
+                        "step": 30,
+                        "maxDataPoints": 240
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {}
+                    }
+                ],
+                "name": "健康状态",
+                "description": "nats 健康状态",
+                "maxPerRow": 4,
+                "custom": {
+                    "textMode": "value",
+                    "graphMode": "none",
+                    "colorMode": "value",
+                    "calc": "lastNotNull",
+                    "valueField": "Value",
+                    "colSpan": 1,
+                    "textSize": {
+                        "value": null
+                    },
+                    "orientation": "auto"
+                },
+                "options": {
+                    "thresholds": {
+                        "steps": [
+                            {
+                                "color": "#634CD9",
+                                "value": null,
+                                "type": "base"
+                            }
+                        ]
+                    },
+                    "valueMappings": [
+                        {
+                            "type": "special",
+                            "result": {
+                                "color": "#ff656b",
+                                "text": "healthz"
+                            },
+                            "match": {
+                                "special": 1,
+                                "from": 1,
+                                "textValue": "true"
+                            }
+                        },
+                        {
+                            "type": "special",
+                            "result": {
+                                "color": "#ecd245",
+                                "text": "unhealthz"
+                            },
+                            "match": {
+                                "special": 0,
+                                "textValue": "false"
+                            }
+                        }
+                    ],
+                    "standardOptions": {}
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID"
+                        },
+                        "properties": {
+                            "thresholds": {
+                                "steps": [
+                                    {
+                                        "color": "#6C53B1",
+                                        "value": null,
+                                        "type": "base"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "stat",
+                "id": "5983cccd-2ae8-42c6-8ce9-bf54a038842b",
+                "layout": {
+                    "h": 4,
+                    "w": 3,
+                    "x": 7,
+                    "y": 0,
+                    "i": "974a23c0-b9e8-4fd2-8d30-4d1f419e439a",
+                    "isResizable": true
+                },
+                "version": "3.0.0",
+                "datasourceCate": "prometheus",
+                "datasourceValue": 5,
+                "targets": [
+                    {
+                        "refId": "A",
+                        "expr": "nats_streams_total{instance=~\"$instance\"}"
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {}
+                    }
+                ],
+                "name": "Streams数量",
+                "description": "Streams数量",
+                "maxPerRow": 4,
+                "custom": {
+                    "textMode": "value",
+                    "graphMode": "none",
+                    "colorMode": "value",
+                    "calc": "lastNotNull",
+                    "valueField": "Value",
+                    "colSpan": 1,
+                    "textSize": {}
+                },
+                "options": {
+                    "standardOptions": {},
+                    "thresholds": {
+                        "steps": [
+                            {
+                                "color": "#634CD9",
+                                "value": null,
+                                "type": "base"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "type": "stat",
+                "id": "8ada219d-c0ae-4385-afab-5e31a7bbec09",
+                "layout": {
+                    "h": 4,
+                    "w": 3,
+                    "x": 10,
+                    "y": 0,
+                    "i": "e5b926f7-60e7-4e4d-891d-ebe5a4bc5de0",
+                    "isResizable": true
+                },
+                "version": "3.0.0",
+                "datasourceCate": "prometheus",
+                "datasourceValue": 5,
+                "targets": [
+                    {
+                        "refId": "A",
+                        "expr": "nats_consumers_total{instance=~\"$instance\"}"
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {}
+                    }
+                ],
+                "name": "Consumers数量",
+                "description": "消费者数量",
+                "maxPerRow": 4,
+                "custom": {
+                    "textMode": "value",
+                    "graphMode": "none",
+                    "colorMode": "value",
+                    "calc": "lastNotNull",
+                    "valueField": "Value",
+                    "colSpan": 1,
+                    "textSize": {}
+                },
+                "options": {
+                    "standardOptions": {},
+                    "thresholds": {
+                        "steps": [
+                            {
+                                "color": "#634CD9",
+                                "value": null,
+                                "type": "base"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "type": "stat",
+                "id": "1d900e18-d75d-4ca2-9e79-998ff9b01d13",
+                "layout": {
+                    "h": 4,
+                    "w": 4,
+                    "x": 13,
+                    "y": 0,
+                    "i": "3bb58743-436b-4707-adb8-51d2cb826d20",
+                    "isResizable": true
+                },
+                "version": "3.0.0",
+                "datasourceCate": "prometheus",
+                "datasourceValue": 5,
+                "targets": [
+                    {
+                        "refId": "A",
+                        "expr": "nats_msg_total{instance=~\"$instance\"}"
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {}
+                    }
+                ],
+                "name": "消息数量",
+                "description": "消费者数量",
+                "maxPerRow": 4,
+                "custom": {
+                    "textMode": "value",
+                    "graphMode": "none",
+                    "colorMode": "value",
+                    "calc": "lastNotNull",
+                    "valueField": "Value",
+                    "colSpan": 1,
+                    "textSize": {}
+                },
+                "options": {
+                    "standardOptions": {},
+                    "thresholds": {
+                        "steps": [
+                            {
+                                "color": "#634CD9",
+                                "value": null,
+                                "type": "base"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "type": "table",
+                "id": "97ebcaa7-ac6c-4f13-8d41-8eaeaa04115b",
+                "layout": {
+                    "h": 6,
+                    "w": 17,
+                    "x": 0,
+                    "y": 4,
+                    "i": "97ebcaa7-ac6c-4f13-8d41-8eaeaa04115b",
+                    "isResizable": true
+                },
+                "version": "3.0.0",
+                "datasourceCate": "prometheus",
+                "datasourceValue": 5,
+                "targets": [
+                    {
+                        "refId": "A",
+                        "expr": "nats_stream_msg_count{instance=~\"$instance\"}"
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {}
+                    }
+                ],
+                "name": "Streams 对应消息数量",
+                "maxPerRow": 4,
+                "custom": {
+                    "showHeader": true,
+                    "colorMode": "value",
+                    "calc": "lastNotNull",
+                    "displayMode": "labelsOfSeriesToRows",
+                    "columns": [
+                        "instance",
+                        "stream_name",
+                        "value"
+                    ],
+                    "sortColumn": "value",
+                    "sortOrder": "descend",
+                    "tableLayout": "fixed",
+                    "nowrap": false
+                },
+                "options": {
+                    "standardOptions": {}
+                },
+                "overrides": [
+                    {}
+                ]
+            },
+            {
+                "type": "table",
+                "id": "46c2106e-a205-4f8b-b4ad-b44adc564547",
+                "layout": {
+                    "h": 6,
+                    "w": 17,
+                    "x": 0,
+                    "y": 10,
+                    "i": "9bb7d4ee-6a43-4b41-8a23-66e3aca6f019",
+                    "isResizable": true
+                },
+                "version": "3.0.0",
+                "datasourceCate": "prometheus",
+                "datasourceValue": 5,
+                "targets": [
+                    {
+                        "refId": "A",
+                        "expr": "nats_stream_consumer_count{instance=~\"$instance\"}"
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {}
+                    }
+                ],
+                "name": "Streams 对应消费者数量",
+                "maxPerRow": 4,
+                "custom": {
+                    "showHeader": true,
+                    "colorMode": "value",
+                    "calc": "lastNotNull",
+                    "displayMode": "labelsOfSeriesToRows",
+                    "columns": [
+                        "instance",
+                        "stream_name",
+                        "value"
+                    ],
+                    "sortColumn": "value",
+                    "sortOrder": "descend",
+                    "tableLayout": "fixed",
+                    "nowrap": false
+                },
+                "options": {
+                    "standardOptions": {}
+                },
+                "overrides": [
+                    {}
+                ]
+            }
+        ],
+        "version": "3.0.0"
+    }
+}

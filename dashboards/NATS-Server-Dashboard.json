@@ -1,0 +1,836 @@
+{
+    "name": "NATS Server Dashboard",
+    "tags": "",
+    "ident": "",
+    "configs": {
+        "version": "3.0.0",
+        "links": [],
+        "var": [
+            {
+                "name": "datasource",
+                "type": "datasource",
+                "hide": false,
+                "definition": "prometheus",
+                "defaultValue": 5
+            }
+        ],
+        "panels": [
+            {
+                "version": "3.0.0",
+                "id": "5a5cc37d-b3dd-4a0f-8ed1-ad3072f68949",
+                "type": "row",
+                "name": "OS Metrics",
+                "collapsed": true,
+                "layout": {
+                    "h": 1,
+                    "w": 24,
+                    "x": 0,
+                    "y": 0,
+                    "i": "5a5cc37d-b3dd-4a0f-8ed1-ad3072f68949"
+                },
+                "panels": []
+            },
+            {
+                "type": "timeseries",
+                "id": "84ddb95c-601b-4040-808e-74172df4e93d",
+                "layout": {
+                    "h": 7,
+                    "w": 12,
+                    "x": 0,
+                    "y": 1,
+                    "i": "84ddb95c-601b-4040-808e-74172df4e93d"
+                },
+                "version": "3.0.0",
+                "datasourceCate": "prometheus",
+                "datasourceValue": "${datasource}",
+                "targets": [
+                    {
+                        "refId": "A",
+                        "expr": "nats_cpu{department=\"aamnec\"}",
+                        "legend": "{{instance}}",
+                        "maxDataPoints": 240
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {}
+                    }
+                ],
+                "name": "Server CPU",
+                "links": [],
+                "maxPerRow": 4,
+                "options": {
+                    "tooltip": {
+                        "mode": "all",
+                        "sort": "none"
+                    },
+                    "legend": {
+                        "displayMode": "list",
+                        "heightInPercentage": 30,
+                        "placement": "bottom",
+                        "behaviour": "showItem",
+                        "selectMode": "single"
+                    },
+                    "valueMappings": [],
+                    "standardOptions": {
+                        "util": "percent"
+                    },
+                    "thresholds": {
+                        "steps": [
+                            {
+                                "color": "#73BF69",
+                                "value": null,
+                                "type": "base"
+                            },
+                            {
+                                "color": "#F2495C",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "custom": {
+                    "drawStyle": "lines",
+                    "lineInterpolation": "linear",
+                    "spanNulls": false,
+                    "lineWidth": 2,
+                    "fillOpacity": 0.1,
+                    "gradientMode": "none",
+                    "stack": "off",
+                    "scaleDistribution": {
+                        "type": "linear"
+                    },
+                    "showPoints": "none",
+                    "pointSize": 5
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID"
+                        },
+                        "properties": {
+                            "rightYAxisDisplay": "off"
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "timeseries",
+                "id": "5a8b691c-f302-4690-91a9-2e5ed3b9e3be",
+                "layout": {
+                    "h": 7,
+                    "w": 12,
+                    "x": 12,
+                    "y": 1,
+                    "i": "5a8b691c-f302-4690-91a9-2e5ed3b9e3be"
+                },
+                "version": "3.0.0",
+                "datasourceCate": "prometheus",
+                "datasourceValue": "${datasource}",
+                "targets": [
+                    {
+                        "refId": "A",
+                        "expr": "nats_mem{department=\"aamnec\"}",
+                        "legend": "{{instance}}",
+                        "maxDataPoints": 240
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {}
+                    }
+                ],
+                "name": "Server Memory",
+                "links": [],
+                "maxPerRow": 4,
+                "options": {
+                    "tooltip": {
+                        "mode": "all",
+                        "sort": "none"
+                    },
+                    "legend": {
+                        "displayMode": "list",
+                        "heightInPercentage": 30,
+                        "placement": "bottom",
+                        "behaviour": "showItem",
+                        "selectMode": "single"
+                    },
+                    "valueMappings": [],
+                    "standardOptions": {
+                        "util": "bytesIEC"
+                    },
+                    "thresholds": {
+                        "steps": [
+                            {
+                                "color": "#73BF69",
+                                "value": null,
+                                "type": "base"
+                            },
+                            {
+                                "color": "#F2495C",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "custom": {
+                    "drawStyle": "lines",
+                    "lineInterpolation": "linear",
+                    "spanNulls": false,
+                    "lineWidth": 2,
+                    "fillOpacity": 0.1,
+                    "gradientMode": "none",
+                    "stack": "off",
+                    "scaleDistribution": {
+                        "type": "linear"
+                    },
+                    "showPoints": "none",
+                    "pointSize": 5
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID"
+                        },
+                        "properties": {
+                            "rightYAxisDisplay": "off"
+                        }
+                    }
+                ]
+            },
+            {
+                "version": "3.0.0",
+                "id": "1f308b27-4ddf-411a-ab77-32602175e90b",
+                "type": "row",
+                "name": "Throughput",
+                "collapsed": true,
+                "layout": {
+                    "h": 1,
+                    "w": 24,
+                    "x": 0,
+                    "y": 15,
+                    "i": "1f308b27-4ddf-411a-ab77-32602175e90b"
+                },
+                "panels": []
+            },
+            {
+                "type": "timeseries",
+                "id": "77897a8a-eaf2-4278-84fa-b1cb19b884ca",
+                "layout": {
+                    "h": 7,
+                    "w": 6,
+                    "x": 0,
+                    "y": 16,
+                    "i": "77897a8a-eaf2-4278-84fa-b1cb19b884ca"
+                },
+                "version": "3.0.0",
+                "datasourceCate": "prometheus",
+                "datasourceValue": "${datasource}",
+                "targets": [
+                    {
+                        "refId": "A",
+                        "expr": "nats_in_bytes{department=\"aamnec\"}",
+                        "legend": "{{instance}}",
+                        "maxDataPoints": 240
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {}
+                    }
+                ],
+                "name": "Bytes In",
+                "links": [],
+                "description": "实例长期运行时汇总统计值",
+                "maxPerRow": 4,
+                "options": {
+                    "tooltip": {
+                        "mode": "all",
+                        "sort": "none"
+                    },
+                    "legend": {
+                        "displayMode": "list",
+                        "heightInPercentage": 30,
+                        "placement": "bottom",
+                        "behaviour": "showItem",
+                        "selectMode": "single"
+                    },
+                    "valueMappings": [],
+                    "standardOptions": {
+                        "util": "bytesIEC"
+                    },
+                    "thresholds": {
+                        "steps": [
+                            {
+                                "color": "#73BF69",
+                                "value": null,
+                                "type": "base"
+                            }
+                        ]
+                    }
+                },
+                "custom": {
+                    "drawStyle": "lines",
+                    "lineInterpolation": "linear",
+                    "spanNulls": false,
+                    "lineWidth": 2,
+                    "fillOpacity": 0.1,
+                    "gradientMode": "none",
+                    "stack": "off",
+                    "scaleDistribution": {
+                        "type": "linear"
+                    },
+                    "showPoints": "none",
+                    "pointSize": 5
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID"
+                        },
+                        "properties": {
+                            "rightYAxisDisplay": "off",
+                            "standardOptions": {
+                                "util": "bytesIEC"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "timeseries",
+                "id": "26a0cc6e-a966-4684-ae56-d723aa051c33",
+                "layout": {
+                    "h": 7,
+                    "w": 6,
+                    "x": 6,
+                    "y": 16,
+                    "i": "26a0cc6e-a966-4684-ae56-d723aa051c33"
+                },
+                "version": "3.0.0",
+                "datasourceCate": "prometheus",
+                "datasourceValue": "${datasource}",
+                "targets": [
+                    {
+                        "refId": "A",
+                        "expr": "nats_in_msgs{department=\"aamnec\"}",
+                        "legend": "{{instance}}",
+                        "maxDataPoints": 240
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {}
+                    }
+                ],
+                "name": "NATS Msgs In",
+                "links": [],
+                "maxPerRow": 4,
+                "options": {
+                    "tooltip": {
+                        "mode": "all",
+                        "sort": "none"
+                    },
+                    "legend": {
+                        "displayMode": "list",
+                        "heightInPercentage": 30,
+                        "placement": "bottom",
+                        "behaviour": "showItem",
+                        "selectMode": "single"
+                    },
+                    "valueMappings": [],
+                    "standardOptions": {
+                        "util": "none"
+                    },
+                    "thresholds": {
+                        "steps": [
+                            {
+                                "color": "#73BF69",
+                                "value": null,
+                                "type": "base"
+                            },
+                            {
+                                "color": "#F2495C",
+                                "value": 100000000
+                            }
+                        ]
+                    }
+                },
+                "custom": {
+                    "drawStyle": "lines",
+                    "lineInterpolation": "linear",
+                    "spanNulls": false,
+                    "lineWidth": 2,
+                    "fillOpacity": 0.1,
+                    "gradientMode": "none",
+                    "stack": "off",
+                    "scaleDistribution": {
+                        "type": "linear"
+                    },
+                    "showPoints": "none",
+                    "pointSize": 5
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID"
+                        },
+                        "properties": {
+                            "rightYAxisDisplay": "off",
+                            "standardOptions": {
+                                "util": "none"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "timeseries",
+                "id": "fdb513ff-7dbd-4ddf-9bed-018bb06671e3",
+                "layout": {
+                    "h": 7,
+                    "w": 6,
+                    "x": 12,
+                    "y": 16,
+                    "i": "fdb513ff-7dbd-4ddf-9bed-018bb06671e3"
+                },
+                "version": "3.0.0",
+                "datasourceCate": "prometheus",
+                "datasourceValue": "${datasource}",
+                "targets": [
+                    {
+                        "refId": "A",
+                        "expr": "nats_out_bytes{department=\"aamnec\"}",
+                        "legend": "{{instance}}",
+                        "maxDataPoints": 240
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {}
+                    }
+                ],
+                "name": "Bytes Out",
+                "links": [],
+                "description": "实例长期运行时汇总统计值",
+                "maxPerRow": 4,
+                "options": {
+                    "tooltip": {
+                        "mode": "all",
+                        "sort": "none"
+                    },
+                    "legend": {
+                        "displayMode": "list",
+                        "heightInPercentage": 30,
+                        "placement": "bottom",
+                        "behaviour": "showItem",
+                        "selectMode": "single"
+                    },
+                    "valueMappings": [],
+                    "standardOptions": {
+                        "util": "bytesIEC"
+                    },
+                    "thresholds": {
+                        "steps": [
+                            {
+                                "color": "#73BF69",
+                                "value": null,
+                                "type": "base"
+                            }
+                        ]
+                    }
+                },
+                "custom": {
+                    "drawStyle": "lines",
+                    "lineInterpolation": "linear",
+                    "spanNulls": false,
+                    "lineWidth": 2,
+                    "fillOpacity": 0.1,
+                    "gradientMode": "none",
+                    "stack": "off",
+                    "scaleDistribution": {
+                        "type": "linear"
+                    },
+                    "showPoints": "none",
+                    "pointSize": 5
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID"
+                        },
+                        "properties": {
+                            "rightYAxisDisplay": "off",
+                            "standardOptions": {
+                                "util": "bytesIEC"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "timeseries",
+                "id": "0e2c4e35-d2ed-49fe-bca7-31ccb0df23b0",
+                "layout": {
+                    "h": 7,
+                    "w": 6,
+                    "x": 18,
+                    "y": 16,
+                    "i": "0e2c4e35-d2ed-49fe-bca7-31ccb0df23b0"
+                },
+                "version": "3.0.0",
+                "datasourceCate": "prometheus",
+                "datasourceValue": "${datasource}",
+                "targets": [
+                    {
+                        "refId": "A",
+                        "expr": "nats_out_msgs{department=\"aamnec\"}",
+                        "legend": "{{instance}}",
+                        "maxDataPoints": 240
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {}
+                    }
+                ],
+                "name": "NATS Msgs Out",
+                "links": [],
+                "maxPerRow": 4,
+                "options": {
+                    "tooltip": {
+                        "mode": "all",
+                        "sort": "none"
+                    },
+                    "legend": {
+                        "displayMode": "list",
+                        "heightInPercentage": 30,
+                        "placement": "bottom",
+                        "behaviour": "showItem",
+                        "selectMode": "single"
+                    },
+                    "valueMappings": [],
+                    "standardOptions": {
+                        "util": "none"
+                    },
+                    "thresholds": {
+                        "steps": [
+                            {
+                                "color": "#73BF69",
+                                "value": null,
+                                "type": "base"
+                            },
+                            {
+                                "color": "#F2495C",
+                                "value": 100000000
+                            }
+                        ]
+                    }
+                },
+                "custom": {
+                    "drawStyle": "lines",
+                    "lineInterpolation": "linear",
+                    "spanNulls": false,
+                    "lineWidth": 2,
+                    "fillOpacity": 0.1,
+                    "gradientMode": "none",
+                    "stack": "off",
+                    "scaleDistribution": {
+                        "type": "linear"
+                    },
+                    "showPoints": "none",
+                    "pointSize": 5
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID"
+                        },
+                        "properties": {
+                            "rightYAxisDisplay": "off"
+                        }
+                    }
+                ]
+            },
+            {
+                "version": "3.0.0",
+                "id": "4d0c559f-ca8a-4a48-bc04-3d7af34edb48",
+                "type": "row",
+                "name": "Client Metrics",
+                "collapsed": true,
+                "layout": {
+                    "h": 1,
+                    "w": 24,
+                    "x": 0,
+                    "y": 30,
+                    "i": "4d0c559f-ca8a-4a48-bc04-3d7af34edb48"
+                },
+                "panels": []
+            },
+            {
+                "type": "timeseries",
+                "id": "dfb62351-8bed-41c6-8946-be9fd843df6f",
+                "layout": {
+                    "h": 7,
+                    "w": 8,
+                    "x": 0,
+                    "y": 31,
+                    "i": "dfb62351-8bed-41c6-8946-be9fd843df6f"
+                },
+                "version": "3.0.0",
+                "datasourceCate": "prometheus",
+                "datasourceValue": "${datasource}",
+                "targets": [
+                    {
+                        "refId": "A",
+                        "expr": "nats_connections{department=\"aamnec\"}",
+                        "legend": "{{instance}}",
+                        "maxDataPoints": 240
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {}
+                    }
+                ],
+                "name": "Connections",
+                "links": [],
+                "maxPerRow": 4,
+                "options": {
+                    "tooltip": {
+                        "mode": "all",
+                        "sort": "none"
+                    },
+                    "legend": {
+                        "displayMode": "list",
+                        "heightInPercentage": 30,
+                        "placement": "bottom",
+                        "behaviour": "showItem",
+                        "selectMode": "single"
+                    },
+                    "valueMappings": [],
+                    "standardOptions": {
+                        "util": "none",
+                        "min": 0
+                    },
+                    "thresholds": {
+                        "steps": [
+                            {
+                                "color": "#73BF69",
+                                "value": null,
+                                "type": "base"
+                            },
+                            {
+                                "color": "#F2495C",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "custom": {
+                    "drawStyle": "lines",
+                    "lineInterpolation": "linear",
+                    "spanNulls": false,
+                    "lineWidth": 2,
+                    "fillOpacity": 0.1,
+                    "gradientMode": "none",
+                    "stack": "off",
+                    "scaleDistribution": {
+                        "type": "linear"
+                    },
+                    "showPoints": "none",
+                    "pointSize": 5
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID"
+                        },
+                        "properties": {
+                            "rightYAxisDisplay": "off"
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "timeseries",
+                "id": "526dfcd1-ff11-4dbb-8b19-112418d18c86",
+                "layout": {
+                    "h": 7,
+                    "w": 8,
+                    "x": 8,
+                    "y": 31,
+                    "i": "526dfcd1-ff11-4dbb-8b19-112418d18c86"
+                },
+                "version": "3.0.0",
+                "datasourceCate": "prometheus",
+                "datasourceValue": "${datasource}",
+                "targets": [
+                    {
+                        "refId": "A",
+                        "expr": "nats_subscriptions{department=\"aamnec\"}",
+                        "legend": "{{instance}}",
+                        "maxDataPoints": 240
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {}
+                    }
+                ],
+                "name": "Subscriptions",
+                "links": [],
+                "maxPerRow": 4,
+                "options": {
+                    "tooltip": {
+                        "mode": "all",
+                        "sort": "none"
+                    },
+                    "legend": {
+                        "displayMode": "list",
+                        "heightInPercentage": 30,
+                        "placement": "bottom",
+                        "behaviour": "showItem",
+                        "selectMode": "single"
+                    },
+                    "valueMappings": [],
+                    "standardOptions": {
+                        "util": "none",
+                        "min": 0
+                    },
+                    "thresholds": {
+                        "steps": [
+                            {
+                                "color": "#73BF69",
+                                "value": null,
+                                "type": "base"
+                            },
+                            {
+                                "color": "#F2495C",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "custom": {
+                    "drawStyle": "lines",
+                    "lineInterpolation": "linear",
+                    "spanNulls": false,
+                    "lineWidth": 2,
+                    "fillOpacity": 0.1,
+                    "gradientMode": "none",
+                    "stack": "off",
+                    "scaleDistribution": {
+                        "type": "linear"
+                    },
+                    "showPoints": "none",
+                    "pointSize": 5
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID"
+                        },
+                        "properties": {
+                            "rightYAxisDisplay": "off"
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "timeseries",
+                "id": "91514606-3054-4950-b227-510d40c04bf1",
+                "layout": {
+                    "h": 7,
+                    "w": 8,
+                    "x": 16,
+                    "y": 31,
+                    "i": "91514606-3054-4950-b227-510d40c04bf1"
+                },
+                "version": "3.0.0",
+                "datasourceCate": "prometheus",
+                "datasourceValue": "${datasource}",
+                "targets": [
+                    {
+                        "refId": "A",
+                        "expr": "nats_slow_consumers{department=\"aamnec\"}",
+                        "legend": "{{instance}}",
+                        "maxDataPoints": 240
+                    }
+                ],
+                "transformations": [
+                    {
+                        "id": "organize",
+                        "options": {}
+                    }
+                ],
+                "name": "Slow Consumers",
+                "links": [],
+                "maxPerRow": 4,
+                "options": {
+                    "tooltip": {
+                        "mode": "all",
+                        "sort": "none"
+                    },
+                    "legend": {
+                        "displayMode": "list",
+                        "heightInPercentage": 30,
+                        "placement": "bottom",
+                        "behaviour": "showItem",
+                        "selectMode": "single"
+                    },
+                    "valueMappings": [],
+                    "standardOptions": {
+                        "util": "none",
+                        "min": 0
+                    },
+                    "thresholds": {
+                        "steps": [
+                            {
+                                "color": "#73BF69",
+                                "value": null,
+                                "type": "base"
+                            },
+                            {
+                                "color": "#F2495C",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "custom": {
+                    "drawStyle": "lines",
+                    "lineInterpolation": "linear",
+                    "spanNulls": false,
+                    "lineWidth": 2,
+                    "fillOpacity": 0.1,
+                    "gradientMode": "none",
+                    "stack": "off",
+                    "scaleDistribution": {
+                        "type": "linear"
+                    },
+                    "showPoints": "none",
+                    "pointSize": 5
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byFrameRefID"
+                        },
+                        "properties": {
+                            "rightYAxisDisplay": "off"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
