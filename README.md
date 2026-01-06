@@ -13,8 +13,6 @@ categraf官方不支持NATS集群监控且缺少消息积压监控指标，所�
 // nats_streams_total          # Streams数量
 // nats_consumers_total        # Consumers数量，消息积压情况
 
-// 理解差异: 要强调的是，核心NATS的客户端统计是流量概念，表征活动的活跃程度；
-而JetStream的Stream状态是存量概念，表征数据的积压情况。
 ```
 
 #### dashboards仪表盘
